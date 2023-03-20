@@ -50,7 +50,7 @@ function hoursWorkedOnDate(employee,date) {
    let timeOutObject = employee.timeOutEvents.find(obj=>obj.date===date);
    let inHourStamp = timeInObject['hour'];
    let outHourStamp = timeOutObject['hour'];
-   let res = (outHourStamp-inHourStamp)/100;
+   let res = parseInt((outHourStamp-inHourStamp)/100);
    return res;
    
 }
@@ -69,8 +69,8 @@ function allWagesFor(employee){
    return count;
 }
 
-function calculatePayroll(employees){
-   let count = employees.reduce((accumulator,employee)=>{
+function calculatePayroll(employee){
+   let count = employee.reduce((accumulator,obj)=>{
        return allWagesFor(employee)+accumulator;
    },0);
    return count;
